@@ -1,0 +1,16 @@
+#container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+}
+
+.cell {
+  border: 1px solid lightgray;
+  width: 32px;
+  height: 32px;
+}
+
+.fill {
+  background-color: black;
+}
