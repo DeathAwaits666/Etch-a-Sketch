@@ -25,15 +25,14 @@ for (let row = 0; row < 16; row++) {
 }
 
 function createGrid(size) {
-  const container = document.getElementById('grid-container');
-  container.innerHTML = ''; // Clear the container
+  const container = document.getElementById("grid-container");
+  container.innerHTML = ""; // Clear the container
   container.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
   container.style.gridTemplateRows = `repeat(${size}, 1fr)`;
 
   for (let i = 0; i < size * size; i++) {
-    const cell = document.createElement('div');
-    cell.classList.add('grid-cell');
+    const cell = document.createElement("div");
+    cell.classList.add("grid-cell");
     container.appendChild(cell);
   }
 }
-
