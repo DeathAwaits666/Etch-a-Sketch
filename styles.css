@@ -24,7 +24,7 @@ h1 {
   justify-content: center;
   gap: 20px; /* Space between the grid and controls */
   margin-bottom: 20px;
-  margin-left: 170px;
+  margin-left: 225px;
 }
 
 /* Grid Container */
@@ -53,15 +53,22 @@ h1 {
 /* Buttons and Inputs Styling */
 button {
   cursor: pointer;
-  background-color: #21e6c1;
+  background-color: #21e6c1; /* Bright cyan button background */
   border: none;
   border-radius: 5px;
   box-shadow: 0px 3.7px 2px #278ea5;
   color: #ffffff; /* White text */
   font-size: 1rem;
   font-weight: 700;
-  padding: 10px 20px;
-  transition: transform 0.1s, background-color 0.3s;
+  padding: 10px 20px; /* Same padding for both buttons */
+  margin: 5px 0;
+  transition: transform 0.1s;
+  width: 200px; /* Fixed width for uniform size */
+  height: 40px; /* Fixed height for uniform size */
+}
+
+button:active {
+  transform: translateY(2px);
 }
 
 button:hover {
@@ -73,27 +80,29 @@ button:active {
 }
 
 input[type="color"] {
-  width: 40px;
-  height: 30px;
+  width: 200px;
+  height: 50px;
 }
 
 input[type="range"] {
   appearance: none;
   width: 200px;
-  height: 12px;
+  height: 3px;
   border-radius: 9999px;
-  background-color: #333333;
+  background-color: #00ffd0;
   outline: none;
   cursor: pointer;
+  border: 3px solid #000000;
 }
 
 input[type="range"]::-webkit-slider-thumb {
   appearance: none;
-  width: 20px;
-  height: 20px;
-  background-color: #21e6c1;
+  width: 23px;
+  height: 23px;
+  background-color: #e4e4e4;
   border-radius: 50%;
   cursor: pointer;
+  border: 4px solid #00ffd0;
 }
 
 /* Grid Controls Below */
@@ -105,6 +114,24 @@ input[type="range"]::-webkit-slider-thumb {
   margin-bottom: 20px;
 }
 
+.grid-cell {
+  transition: all 0.2s;
+}
+
+.grid-cell:hover {
+  box-shadow: 0px 0px 15px 5px #21e6c1; /* Glow effect */
+}
+
+.controls {
+  align-items: center;
+}
+
+label {
+  text-decoration: none;
+  color: #21e6c1;
+  font-weight: bold;
+  font-size: 1rem;
+}
 /* Footer Styling */
 footer {
   margin-top: 20px;
@@ -121,4 +148,13 @@ footer a {
 
 footer a:hover {
   color: #ffffff;
+}
+
+#confetti-container {
+  position: absolute; /* Position it relative to the nearest positioned ancestor */
+  bottom: 0; /* Align it to the bottom */
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 10; /* Ensures it appears above other elements */
 }
