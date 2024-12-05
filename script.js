@@ -74,6 +74,17 @@ document.getElementById("color-picker").addEventListener("input", (event) => {
 
 // Toggle Rainbow Mode
 document.getElementById("rainbow-mode").addEventListener("click", () => {
+  // Toggle rainbow mode and control sound
+  if (isRainbowMode) {
+    // Stop the rainbow sound when the button is toggled off
+    rainbowSound.pause();
+    rainbowSound.currentTime = 0; // Reset the sound
+  } else {
+    // Start the rainbow sound when the button is toggled on
+    rainbowSound.play();
+  }
+
+  // Toggle rainbow mode state
   isRainbowMode = !isRainbowMode;
   document.getElementById("rainbow-mode").textContent = isRainbowMode
     ? "Rainbow Mode: ON"
@@ -108,27 +119,13 @@ document.getElementById("clear-btn").addEventListener("click", () => {
   });
 });
 
-// Confetti effect on clear button click
-function confetti() {
-  const script = document.createElement("script");
-  script.src = "https://cdn.jsdelivr.net/npm/canvas-confetti";
-  document.body.appendChild(script);
-  script.onload = () => {
-    window.confetti({
-      particleCount: 100,
-      spread: 170,
-      origin: { x: 5.5, y: 5.5 },
-    });
-  };
-}
-
 // Grid resizing with window resize event
 document.getElementById("grid-size").addEventListener("input", (event) => {
   gridContainer.style.transition = "all 0.5s ease";
   createGrid(event.target.value);
 });
 
-//SOUND EFFECTS
+// SOUND EFFECTS
 
 // Sounds for different actions
 const drawSound = new Audio("sounds/draw-sound.mp3");

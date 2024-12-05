@@ -12,6 +12,24 @@ body {
   color: #21e6c1; /* Bright cyan for text */
 }
 
+body {
+  background: linear-gradient(45deg, rgb(7, 30, 61), #048b73);
+  background-size: 400% 400%;
+  animation: gradientAnimation 10s ease infinite;
+}
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
 h1 {
   margin-bottom: 20px;
   font-size: 2rem; /* Increase font size for the header */
@@ -32,7 +50,7 @@ h1 {
   display: grid;
   width: 500px;
   height: 500px;
-  border: 10px solid #21e6c1;
+  border: 10px solid #00ffd0;
   background-color: #ffffff;
   border-radius: 5px;
   margin: 0 auto; /* Centers the grid horizontally */
@@ -62,7 +80,7 @@ button {
   font-weight: 700;
   padding: 10px 20px; /* Same padding for both buttons */
   margin: 5px 0;
-  transition: transform 0.1s;
+  transition: transform 0.2s ease, background-color 0.3s ease;
   width: 200px; /* Fixed width for uniform size */
   height: 40px; /* Fixed height for uniform size */
 }
@@ -73,6 +91,8 @@ button:active {
 
 button:hover {
   background-color: #1ba1c8;
+  transform: scale(1.05); /* Slight enlarge on hover */
+  background-color: #17a2b8; /* Slightly change the background on hover */
 }
 
 button:active {
@@ -116,10 +136,13 @@ input[type="range"]::-webkit-slider-thumb {
 
 .grid-cell {
   transition: all 0.2s;
+  border: 1px solid #ddd;
+  transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
 .grid-cell:hover {
   box-shadow: 0px 0px 15px 5px #21e6c1; /* Glow effect */
+  transform: scale(1.1); /* Slightly enlarge on hover */
 }
 
 .controls {
@@ -148,13 +171,4 @@ footer a {
 
 footer a:hover {
   color: #ffffff;
-}
-
-#confetti-container {
-  position: absolute; /* Position it relative to the nearest positioned ancestor */
-  bottom: 0; /* Align it to the bottom */
-  left: 0;
-  right: 0;
-  width: 100%;
-  z-index: 10; /* Ensures it appears above other elements */
 }
