@@ -1,38 +1,76 @@
-let onHover = (e) => {
-  e.target.classList.add("fill");
-};
+const gridContainer = document.getElementById("grid-container");
+let currentColor = "#000000"; // Default color
+let isRainbowMode = false;
 
-let clear = () => {
-  for (let elem of document.getElementsByClassName("fill")) {
-    elem.classList.remove("fill");
-  }
-};
-
-document.getElementById("reset-button").addEventListener("click", clear);
-
-for (let row = 0; row < 16; row++) {
-  let div = document.createElement("div");
-  div.id = `${row}`;
-  div.className = "row";
-  document.getElementById("container").appendChild(div);
-  for (let col = 0; col < 16; col++) {
-    let div = document.createElement("div");
-    div.id = `${row}-${col}`;
-    div.className = "cell";
-    div.addEventListener("mouseover", onHover);
-    document.getElementById(`${row}`).appendChild(div);
-  }
-}
-
+// Function to create the grid
 function createGrid(size) {
-  const container = document.getElementById("grid-container");
-  container.innerHTML = ""; // Clear the container
-  container.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
-  container.style.gridTemplateRows = `repeat(${size}, 1fr)`;
+  gridContainer.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
+  gridContainer.style.gridTemplateRows = `repeat(${size}, 1fr)`;
 
+  gridContainer.innerHTML = ""; // Clear previous grid
   for (let i = 0; i < size * size; i++) {
     const cell = document.createElement("div");
     cell.classList.add("grid-cell");
-    container.appendChild(cell);
+    gridContainer.appendChild(cell);
   }
 }
+
+// Initialize the grid
+
+createGrid(16);
+
+document.getElementById("grid-size").addEventListener("input", (event) => {
+  createGrid(event.target.value);
+});
+
+// Clear Button
+
+document.getElementById("clear-btn").addEventListener("click", () => {
+  document
+    .querySelectorAll(".grid-cell")
+    .forEach((cell) => (cell.style.backgroundColor = ""));
+});
+
+// Add hover effect
+
+gridContainer.addEventListener("mouseover", (event) => {
+  if (event.target.classList.contains("grid-cell")) {
+    event.target.style.backgroundColor = "black";
+  }
+});
+
+// Update currentColor when the user selects a new color
+document.getElementById("color-picker").addEventListener("input", (event) => {
+  currentColor = event.target.value;
+});
+// Use the selected color on hover
+
+gridContainer.addEventListener("mouseover", (event) => {
+  if (event.target.classList.contains("grid-cell")) {
+    event.target.style.backgroundColor = currentColor;
+  }
+});
+
+// Toggle Rainbow Mode
+document.getElementById("rainbow-mode").addEventListener("click", () => {
+  isRainbowMode = !isRainbowMode;
+  document.getElementById("rainbow-mode").textContent = isRainbowMode
+    ? "Rainbow Mode: ON"
+    : "Rainbow Mode: OFF";
+});
+
+// Helper function to generate random colors
+function getRandomColor() {
+  return `#${Math.floor(Math.random() * 16777215)
+    .toString(16)
+    .padStart(6, "0")}`;
+}
+
+// Update hover effect for Rainbow Mode
+gridContainer.addEventListener("mouseover", (event) => {
+  if (event.target.classList.contains("grid-cell")) {
+    event.target.style.backgroundColor = isRainbowMode
+      ? getRandomColor()
+      : currentColor;
+  }
+});

@@ -1,32 +1,124 @@
+/* General Styling */
 body {
   display: flex;
   flex-direction: column;
-  justify-content: center; /* Vertically centers everything */
-  align-items: center; /* Horizontally centers everything */
-  height: 100vh; /* Full height of the viewport */
-  margin: 0; /* Remove default margins */
+  align-items: center;
+  justify-content: center; /* Ensure the body is centered vertically */
+  min-height: 100vh;
+  margin: 0;
+  padding: 20px;
+  font-family: Arial, sans-serif; /* Ensure the font is applied */
+  background-color: rgb(7, 30, 61); /* Dark background */
+  color: #21e6c1; /* Bright cyan for text */
 }
 
 h1 {
-  margin-bottom: 20px; /* Add space below the header */
+  margin-bottom: 20px;
+  font-size: 2rem; /* Increase font size for the header */
+  text-align: center;
 }
 
-#grid-container {
+/* Layout for Grid Container and Controls */
+.layout {
   display: flex;
-  justify-content: center; /* Center grid container */
+  justify-content: center;
+  gap: 20px; /* Space between the grid and controls */
+  margin-bottom: 20px;
+  margin-left: 170px;
+}
+
+/* Grid Container */
+#grid-container {
+  display: grid;
   width: 500px;
   height: 500px;
-  border: 2px solid black;
+  border: 10px solid #21e6c1;
+  background-color: #ffffff;
+  border-radius: 5px;
+  margin: 0 auto; /* Centers the grid horizontally */
+}
+
+.grid-cell {
+  border: 1px solid #ddd;
+}
+
+/* Controls (on the right) */
+.controls {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+/* Buttons and Inputs Styling */
+button {
+  cursor: pointer;
+  background-color: #21e6c1;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0px 3.7px 2px #278ea5;
+  color: #ffffff; /* White text */
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 10px 20px;
+  transition: transform 0.1s, background-color 0.3s;
+}
+
+button:hover {
+  background-color: #1ba1c8;
+}
+
+button:active {
+  transform: translateY(2px);
+}
+
+input[type="color"] {
+  width: 40px;
+  height: 30px;
+}
+
+input[type="range"] {
+  appearance: none;
+  width: 200px;
+  height: 12px;
+  border-radius: 9999px;
+  background-color: #333333;
+  outline: none;
+  cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background-color: #21e6c1;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* Grid Controls Below */
+.grid-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px; /* Spacing between Clear button and slider */
   margin-bottom: 20px;
 }
 
-.controls {
-  display: flex;
-  gap: 10px; /* Space between buttons */
-  margin-bottom: 20px; /* Space below the buttons */
+/* Footer Styling */
+footer {
+  margin-top: 20px;
+  text-align: center;
 }
 
-footer {
-  margin-top: 20px; /* Add space above the footer */
-  text-align: center; /* Center text inside the footer */
+footer a {
+  text-decoration: none;
+  color: #21e6c1;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: color 0.3s;
+}
+
+footer a:hover {
+  color: #ffffff;
 }

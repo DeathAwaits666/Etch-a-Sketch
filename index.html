@@ -1,19 +1,39 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta ame="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" type="text/css" href="styles.css" />
+    <script
+      src="https://kit.fontawesome.com/09d77b406d.js"
+      crossorigin="anonymous"
+    ></script>
     <title>Etch-a-Sketch</title>
   </head>
   <body>
     <h1>Etch-a-Sketch</h1>
-    <div id="grid-container"></div>
-    <div id="controls">
-      <button id="reset">Reset</button>
-      <button id="resize">Change Size</button>
+    <div class="layout">
+      <div id="grid-container"></div>
+      <div class="controls">
+        <input type="color" id="color-picker" value="#000000" />
+        <label for="color-picker"
+          ><i class="fa-solid fa-arrow-left"></i> Colors</label
+        >
+        <button id="rainbow-mode">Rainbow Mode</button>
+      </div>
     </div>
-    <footer>By DeathAwaits 2024</footer>
-    <script src="script.js" defer></script>
+    <div class="grid-controls">
+      <button id="clear-btn">Clear</button>
+      <input type="range" id="grid-size" min="2" max="64" value="16" />
+      <label for="grid-size"
+        ><i class="fa-solid fa-arrow-left"></i> Grid Size</label
+      >
+    </div>
+    <footer>
+      <a href="https://github.com/DeathAwaits666/Etch-a-Sketch"
+        >By DeathAwaits <i class="fa-solid fa-github"></i
+      ></a>
+    </footer>
+    <script src="script.js"></script>
   </body>
 </html>
